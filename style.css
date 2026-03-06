@@ -1,68 +1,67 @@
-/* ตั้งค่าพื้นฐาน */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; /* ลบแถบสีเวลาแตะบนมือถือ */
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-color: #fff0f5; /* ชมพูอ่อนพาสเทล */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.container {
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
     padding: 20px;
 }
 
-/* ส่วนจัดวางปุ่ม */
+.wrapper {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.heart-header {
+    margin-bottom: 30px;
+    color: #ff69b4;
+}
+
+.heart-header h1 { font-size: clamp(1.2rem, 5vw, 1.8rem); margin-bottom: 5px; }
+.heart-header .sub-text { font-style: italic; font-size: 1.1rem; color: #ffb6c1; }
+.heart-header h2 { font-size: clamp(1rem, 4vw, 1.5rem); margin-top: 5px; }
+
+/* Grid Layout */
 .button-grid {
-    display: flex;
-    flex-wrap: wrap; /* ให้ปุ่มขึ้นบรรทัดใหม่ได้เมื่อจอแคบ */
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+    gap: 15px;
+    /* Desktop: เรียงแถวละ 4 */
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .emoji-btn {
-    flex: 1; /* ให้ปุ่มขยายขนาดเท่าๆ กัน */
-    min-width: 120px; /* ขนาดขั้นต่ำของปุ่ม */
-    aspect-ratio: 1 / 1; /* ทำปุ่มให้เป็นสี่เหลี่ยมจัตุรัส */
-    
-    font-size: 60px;
+    aspect-ratio: 1 / 1;
+    font-size: clamp(2rem, 8vw, 3.5rem);
     background: #ffffff;
-    border: none;
-    border-radius: 30px;
+    border: 3px solid #ffdae9;
+    border-radius: 20px;
     cursor: pointer;
-    
-    /* เงาและ Animation */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
+    transition: transform 0.1s, background-color 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* เอฟเฟกต์ตอนกด (สำหรับทั้ง Mouse และ Touch) */
 .emoji-btn:active {
-    transform: scale(0.85);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    background-color: #e9ecef;
+    transform: scale(0.9);
+    background-color: #ffe4e1;
 }
 
-/* ปรับขนาดอิโมจิเมื่อหน้าจอเล็กมาก */
-@media (max-width: 400px) {
-    .emoji-btn {
-        font-size: 50px;
-        min-width: 100px;
-    }
+/* --- Mobile Responsive --- */
+@media (max-width: 600px) {
     .button-grid {
-        gap: 15px;
+        /* Mobile: เรียงแถวละ 2 */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 }
