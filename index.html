@@ -3,22 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Emoji Sound Board</title>
+    <title>For You Forever ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
+    <div class="wrapper">
+        <header class="heart-header">
+            <h1>I’m not a beaver 🦫,</h1>
+            <p class="sub-text">but</p>
+            <h2>I belong to you forever na kub :P</h2>
+        </header>
+
         <div class="button-grid">
-            <button id="btn1" class="emoji-btn">🦫</button>
-            <button id="btn2" class="emoji-btn">🥔</button>
-            <button id="btn3" class="emoji-btn">🫶</button>
+            <button class="emoji-btn" onclick="play('click1')">🦫</button>
+            <button class="emoji-btn" onclick="play('click2')">❤️</button>
+            <button class="emoji-btn" onclick="play('click3')">🪵</button>
+            <button class="emoji-btn" onclick="play('click4')">🥔</button>
+            <button class="emoji-btn" onclick="play('click7')">🫶</button>
+            <button class="emoji-btn" onclick="play('click8')">🏥</button>
+            <button class="emoji-btn" onclick="play('click9')">🚀</button>
+            <button class="emoji-btn" onclick="play('clickpuyou')">❌</button>
         </div>
     </div>
 
-    <audio id="sound1" src="click1.mp3" preload="auto"></audio>
-    <audio id="sound2" src="click2.mp3" preload="auto"></audio>
-    <audio id="sound3" src="click3.mp3" preload="auto"></audio>
+    <audio id="click1" src="click1.mp3" preload="auto"></audio>
+    <audio id="click2" src="click2.mp3" preload="auto"></audio>
+    <audio id="click3" src="click3.mp3" preload="auto"></audio>
+    <audio id="click4" src="click4.mp3" preload="auto"></audio>
+    <audio id="click7" src="click7.mp3" preload="auto"></audio>
+    <audio id="click8" src="click8.mp3" preload="auto"></audio>
+    <audio id="click9" src="click9.mp3" preload="auto"></audio>
+    <audio id="clickpuyou" src="clickpuyou.mp3" preload="auto"></audio>
 
     <script src="script.js"></script>
 </body>
