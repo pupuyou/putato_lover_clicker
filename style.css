@@ -1,31 +1,68 @@
+/* ตั้งค่าพื้นฐาน */
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* ลบแถบสีเวลาแตะบนมือถือ */
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    background-color: #ffffff; /* พื้นหลังสีขาวสะอาดตา */
-    font-family: sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.container {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ส่วนจัดวางปุ่ม */
 .button-grid {
     display: flex;
-    gap: 30px; /* ระยะห่างระหว่างปุ่ม */
+    flex-wrap: wrap; /* ให้ปุ่มขึ้นบรรทัดใหม่ได้เมื่อจอแคบ */
+    justify-content: center;
+    gap: 20px;
 }
 
 .emoji-btn {
-    font-size: 80px; /* ขนาดอิโมจิใหญ่ๆ */
-    background: #f0f0f0;
+    flex: 1; /* ให้ปุ่มขยายขนาดเท่าๆ กัน */
+    min-width: 120px; /* ขนาดขั้นต่ำของปุ่ม */
+    aspect-ratio: 1 / 1; /* ทำปุ่มให้เป็นสี่เหลี่ยมจัตุรัส */
+    
+    font-size: 60px;
+    background: #ffffff;
     border: none;
-    border-radius: 25px;
-    padding: 20px 40px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: transform 0.1s, background 0.2s;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    
+    /* เงาและ Animation */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* เวลากดให้ปุ่มยุบลงไปนิดนึง */
+/* เอฟเฟกต์ตอนกด (สำหรับทั้ง Mouse และ Touch) */
 .emoji-btn:active {
-    transform: scale(0.9);
-    background: #e0e0e0;
+    transform: scale(0.85);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    background-color: #e9ecef;
+}
+
+/* ปรับขนาดอิโมจิเมื่อหน้าจอเล็กมาก */
+@media (max-width: 400px) {
+    .emoji-btn {
+        font-size: 50px;
+        min-width: 100px;
+    }
+    .button-grid {
+        gap: 15px;
+    }
 }
