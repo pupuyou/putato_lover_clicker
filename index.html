@@ -3,22 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Clicker - Level Sounds</title>
+    <title>Emoji Clicker Party!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1 id="levelText">Level: 1</h1>
+    <div class="main-container">
+        <h1>Emoji Clicker!</h1>
         <div class="score-board">
-            <span id="score">0</span>
+            Score: <span id="totalScore">0</span>
         </div>
-        
-        <button id="clickBtn">
-            <p>CLICK!</p>
-        </button>
 
-        <p class="hint">กดไปเรื่อยๆ เพื่อเปลี่ยนเสียงนะคะ</p>
+        <div class="button-group">
+            <button id="btnBeaver" class="click-btn">
+                <span class="emoji">🦫</span>
+                <span class="count" id="countBeaver">0</span>
+            </button>
+
+            <button id="btnPotato" class="click-btn">
+                <span class="emoji">🥔</span>
+                <span class="count" id="countPotato">0</span>
+            </button>
+
+            <button id="btnHeart" class="click-btn">
+                <span class="emoji">🫶</span>
+                <span class="count" id="countHeart">0</span>
+            </button>
+        </div>
     </div>
 
     <audio id="sound1" src="click1.mp3" preload="auto"></audio>
