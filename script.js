@@ -1,41 +1,21 @@
-// คะแนนรวม
-let totalScore = 0;
-const totalScoreDisplay = document.getElementById('totalScore');
+// ดึง Element ของปุ่มและเสียงมาเตรียมไว้
+const btn1 = document.getElementById('btn1');
+const btn2 = document.getElementById('btn2');
+const btn3 = document.getElementById('btn3');
 
-// คะแนนแยกแต่ละปุ่ม
-const counts = {
-    btnBeaver: 0,
-    btnPotato: 0,
-    btnHeart: 0
-};
+const s1 = document.getElementById('sound1');
+const s2 = document.getElementById('sound2');
+const s3 = document.getElementById('sound3');
 
-// ดึงไฟล์เสียง
-const sounds = {
-    btnBeaver: document.getElementById('sound1'),
-    btnPotato: document.getElementById('sound2'),
-    btnHeart: document.getElementById('sound3')
-};
-
-// ฟังก์ชันหลักเมื่อมีการคลิก
-function handleButtonClick(buttonId) {
-    // 1. เพิ่มคะแนนแยกปุ่ม
-    counts[buttonId]++;
-    const countDisplay = document.getElementById(buttonId).querySelector('.count');
-    countDisplay.innerText = counts[buttonId];
-
-    // 2. เพิ่มคะแนนรวม
-    totalScore++;
-    totalScoreDisplay.innerText = totalScore;
-
-    // 3. เล่นเสียงประจำปุ่ม (แบบรัวได้)
-    const currentSound = sounds[buttonId];
-    if (currentSound) {
-        currentSound.currentTime = 0;
-        currentSound.play();
+// ฟังก์ชันสำหรับเล่นเสียง (รีเซ็ตเวลาเพื่อให้กดรัวได้)
+function playSound(audio) {
+    if (audio) {
+        audio.currentTime = 0;
+        audio.play();
     }
 }
 
-// ผูก Event Listener ให้กับทั้ง 3 ปุ่ม
-document.getElementById('btnBeaver').addEventListener('click', () => handleButtonClick('btnBeaver'));
-document.getElementById('btnPotato').addEventListener('click', () => handleButtonClick('btnPotato'));
-document.getElementById('btnHeart').addEventListener('click', () => handleButtonClick('btnHeart'));
+// ผูกปุ่มเข้ากับเสียง
+btn1.addEventListener('click', () => playSound(s1));
+btn2.addEventListener('click', () => playSound(s2));
+btn3.addEventListener('click', () => playSound(s3));
