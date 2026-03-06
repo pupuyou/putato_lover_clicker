@@ -1,38 +1,41 @@
-let count = 0;
-const scoreDisplay = document.getElementById('score');
-const clickBtn = document.getElementById('clickBtn');
-const levelText = document.getElementById('levelText');
+// คะแนนรวม
+let totalScore = 0;
+const totalScoreDisplay = document.getElementById('totalScore');
 
-// ดึงไฟล์เสียงมาเก็บในตัวแปร
-const s1 = document.getElementById('sound1');
-const s2 = document.getElementById('sound2');
-const s3 = document.getElementById('sound3');
+// คะแนนแยกแต่ละปุ่ม
+const counts = {
+    btnBeaver: 0,
+    btnPotato: 0,
+    btnHeart: 0
+};
 
-clickBtn.addEventListener('click', () => {
-    count++;
-    scoreDisplay.innerText = count;
+// ดึงไฟล์เสียง
+const sounds = {
+    btnBeaver: document.getElementById('sound1'),
+    btnPotato: document.getElementById('sound2'),
+    btnHeart: document.getElementById('sound3')
+};
 
-    let currentSound;
+// ฟังก์ชันหลักเมื่อมีการคลิก
+function handleButtonClick(buttonId) {
+    // 1. เพิ่มคะแนนแยกปุ่ม
+    counts[buttonId]++;
+    const countDisplay = document.getElementById(buttonId).querySelector('.count');
+    countDisplay.innerText = counts[buttonId];
 
-    // Logic การเลือกเสียงตามคะแนน
-    if (count <= 20) {
-        currentSound = s1;
-        levelText.innerText = "Level: 1";
-    } else if (count <= 50) {
-        currentSound = s2;
-        levelText.innerText = "Level: 2 (New Sound!)";
-        clickBtn.style.backgroundColor = "#ffa502";
-        clickBtn.style.borderBottomColor = "#e69500";
-    } else {
-        currentSound = s3;
-        levelText.innerText = "Level: MAX (Super Sound!)";
-        clickBtn.style.backgroundColor = "#ff4757";
-        clickBtn.style.borderBottomColor = "#ff2e44";
-    }
+    // 2. เพิ่มคะแนนรวม
+    totalScore++;
+    totalScoreDisplay.innerText = totalScore;
 
-    // เล่นเสียงที่เลือก (แบบรัวได้)
+    // 3. เล่นเสียงประจำปุ่ม (แบบรัวได้)
+    const currentSound = sounds[buttonId];
     if (currentSound) {
         currentSound.currentTime = 0;
         currentSound.play();
     }
-});
+}
+
+// ผูก Event Listener ให้กับทั้ง 3 ปุ่ม
+document.getElementById('btnBeaver').addEventListener('click', () => handleButtonClick('btnBeaver'));
+document.getElementById('btnPotato').addEventListener('click', () => handleButtonClick('btnPotato'));
+document.getElementById('btnHeart').addEventListener('click', () => handleButtonClick('btnHeart'));
