@@ -4,60 +4,28 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f7f9fc;
-    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* พื้นหลังสีขาวสะอาดตา */
+    font-family: sans-serif;
 }
 
-.main-container {
-    text-align: center;
-    background: white;
-    padding: 3rem;
-    border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-}
-
-h1 { color: #333; margin-bottom: 10px; }
-
-.score-board {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #2bcbba;
-    margin-bottom: 30px;
-}
-
-.button-group {
+.button-grid {
     display: flex;
-    gap: 20px; /* ระยะห่างระหว่างปุ่ม */
-    justify-content: center;
+    gap: 30px; /* ระยะห่างระหว่างปุ่ม */
 }
 
-.click-btn {
-    background-color: white;
-    border: 4px solid #eee;
-    border-radius: 20px;
-    padding: 20px;
+.emoji-btn {
+    font-size: 80px; /* ขนาดอิโมจิใหญ่ๆ */
+    background: #f0f0f0;
+    border: none;
+    border-radius: 25px;
+    padding: 20px 40px;
     cursor: pointer;
-    transition: all 0.1s;
-    outline: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 100px;
+    transition: transform 0.1s, background 0.2s;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
-/* Effect เวลากดปุ่ม */
-.click-btn:active {
-    transform: scale(0.95);
-    border-color: #2bcbba;
-}
-
-.emoji {
-    font-size: 4rem; /* ขนาดอิโมจิ */
-    margin-bottom: 10px;
-}
-
-.count {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #666;
+/* เวลากดให้ปุ่มยุบลงไปนิดนึง */
+.emoji-btn:active {
+    transform: scale(0.9);
+    background: #e0e0e0;
 }
