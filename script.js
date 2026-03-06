@@ -1,21 +1,24 @@
-// ดึง Element ของปุ่มและเสียงมาเตรียมไว้
-const btn1 = document.getElementById('btn1');
-const btn2 = document.getElementById('btn2');
-const btn3 = document.getElementById('btn3');
-
-const s1 = document.getElementById('sound1');
-const s2 = document.getElementById('sound2');
-const s3 = document.getElementById('sound3');
-
-// ฟังก์ชันสำหรับเล่นเสียง (รีเซ็ตเวลาเพื่อให้กดรัวได้)
-function playSound(audio) {
+/**
+ * ฟังก์ชันหลักสำหรับเล่นเสียง
+ * รองรับไฟล์เสียงทั้ง 8 ไฟล์ตามที่กำหนดใน HTML
+ * @param {string} id - ID ของ HTML Audio Element (เช่น click1, clickpuyou)
+ */
+function play(id) {
+    const audio = document.getElementById(id);
+    
     if (audio) {
+        // รีเซ็ตเวลาให้เริ่มที่ 0 ทันทีเพื่อให้กดซ้ำๆ (Spam click) ได้โดยเสียงไม่ขาดช่วง
         audio.currentTime = 0;
-        audio.play();
+        
+        // สั่งให้เล่นเสียง
+        // ใช้ .catch เพื่อป้องกัน Error ในกรณีที่ Browser บล็อกการเล่นเสียงอัตโนมัติ
+        audio.play().catch(error => {
+            console.warn("ระบบบล็อกเสียง: กรุณาคลิกที่หน้าเว็บก่อน 1 ครั้งเพื่อเปิดใช้งานเสียงนะคะ", error);
+        });
+    } else {
+        console.error("หาไฟล์เสียงไม่เจอ: ตรวจสอบว่า ID '" + id + "' ใน HTML ตรงกับใน Script หรือไม่");
     }
 }
 
-// ผูกปุ่มเข้ากับเสียง
-btn1.addEventListener('click', () => playSound(s1));
-btn2.addEventListener('click', () => playSound(s2));
-btn3.addEventListener('click', () => playSound(s3));
+// เพิ่มลูกเล่นเล็กน้อย: ป้องกันการค้างของปุ่มเวลาที่ผู้ใช้กดย้ำๆ บนมือถือ
+document.addEventListener('touchstart', function() {}, {passive: true});
